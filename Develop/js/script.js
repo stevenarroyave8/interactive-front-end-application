@@ -81,6 +81,26 @@ window.addEventListener('load', function() {
 // Define the function to display the generated cocktail on the page
   function displayGeneratedCocktail(cocktail) {
     // TODO: cocktail display logic here
+    var cocktailImg = document.getElementById("cocktail-img");
+    var cocktailInstructions = document.getElementById("cocktail-instructions");
+  var cocktailIngredients = document.getElementById("cocktail-ingredients");
+  cocktailImg.src = cocktail.drinkImg;
+  cocktailInstructions.innerText = cocktail.instructions;
+  // Create an unordered list to hold the cocktail ingredients
+  var ingredientsList = document.createElement("ul");
+  // Loop through the ingredients and measurements to create list items
+  for (var i = 0; i < cocktail.ingredients.length; i++) {
+    var ingredient = cocktail.ingredients[i];
+    var measurement = cocktail.measurements[i];
+    // If the measurement is not null or empty, add it to the list item
+    if (measurement) {
+        var listItem = document.createElement("li");
+        listItem.innerText = measurement + " " + ingredient;
+        ingredientsList.appendChild(listItem);
+      }
+    }
+     // Add the list of ingredients to the cocktail ingredients element
+  cocktailIngredients.appendChild(ingredientsList);
   }
 
 });
