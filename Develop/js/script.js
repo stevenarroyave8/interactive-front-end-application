@@ -77,6 +77,33 @@ window.addEventListener('load', function() {
 // function to display the generated dish on the page
   function displayGeneratedDish(dish) {
     // TODO: dish display logic here
+    var foodUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+
+    async function getFoodApi() {
+      try {
+        const response = await fetch(foodUrl);
+        if (!response.ok) {
+          throw Error('Failed to fetch data from the API');
+        }
+        const data = await response.json();
+        const meals = data.meals;
+    
+        if (meals && meals.length > 0) {
+            meals.forEach((meal) => {
+              for (let i = 1; i <= 20; i++) {
+                const ingredient = meal['strIngredient' + i];
+                const measurement = meal['strMeasure' + i];
+                if (ingredient && measurement) {
+                  console.log('Ingredient:', ingredient, 'Measurement:', measurement);
+                }
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    }  
+    getFoodApi();
   }
 // Define the function to display the generated cocktail on the page
   function displayGeneratedCocktail(cocktail) {
