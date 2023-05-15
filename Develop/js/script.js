@@ -19,13 +19,34 @@ window.addEventListener('load', function() {
  // function to generate a dish based on the selected ingredients
  function generateDish(ingredients) {
     // TODO: dish generation logic here
-    // create an array to hold the selected ingredients
-    var selectedIngredients = [];
-     // loop through the ingredients list and add the value of each checked ingredient to the selectedIngredients array
-  ingredients.forEach(function(ingredient) {
-    selectedIngredients.push(ingredient.value);
-    // TODO: use array to generate dish using the API? to get recipe database
-  });
+    var foodUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+
+    async function getFoodApi() {
+      try {
+        const response = await fetch(foodUrl);
+        if (!response.ok) {
+          throw Error('Failed to fetch data from the API');
+        }
+        const data = await response.json();
+        const meals = data.meals;
+    
+        if (meals && meals.length > 0) {
+            meals.forEach((meal) => {
+              for (let i = 1; i <= 20; i++) {
+                const ingredient = meal['strIngredient' + i];
+                const measurement = meal['strMeasure' + i];
+                if (ingredient && measurement) {
+                  console.log('Ingredient:', ingredient, 'Measurement:', measurement);
+                }
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    }  
+    getFoodApi();
+
   }
 // function to generate a cocktail based on the selected ingredients and the generated dish
   function generateCocktail(ingredient) {
@@ -84,33 +105,14 @@ window.addEventListener('load', function() {
 // function to display the generated dish on the page
   function displayGeneratedDish(dish) {
     // TODO: dish display logic here
-    var foodUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-
-    async function getFoodApi() {
-      try {
-        const response = await fetch(foodUrl);
-        if (!response.ok) {
-          throw Error('Failed to fetch data from the API');
-        }
-        const data = await response.json();
-        const meals = data.meals;
-    
-        if (meals && meals.length > 0) {
-            meals.forEach((meal) => {
-              for (let i = 1; i <= 20; i++) {
-                const ingredient = meal['strIngredient' + i];
-                const measurement = meal['strMeasure' + i];
-                if (ingredient && measurement) {
-                  console.log('Ingredient:', ingredient, 'Measurement:', measurement);
-                }
-            }
-          });
-        }
-      } catch (error) {
-        console.error('Error:', error.message);
-      }
-    }  
-    getFoodApi();
+        // create an array to hold the selected ingredients
+        var selectedIngredients = [];
+        // loop through the ingredients list and add the value of each checked ingredient to the selectedIngredients array
+     ingredients.forEach(function(ingredient) {
+       selectedIngredients.push(ingredient.value);
+       // TODO: use array to generate dish using the API? to get recipe database
+     });
+  
   }
 // Define the function to display the generated cocktail on the page
   function displayGeneratedCocktail(cocktail) {
