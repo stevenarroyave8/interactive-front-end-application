@@ -19,6 +19,13 @@ window.addEventListener('load', function() {
  // function to generate a dish based on the selected ingredients
  function generateDish(ingredients) {
     // TODO: dish generation logic here
+    // create an array to hold the selected ingredients
+    var selectedIngredients = [];
+     // loop through the ingredients list and add the value of each checked ingredient to the selectedIngredients array
+  ingredients.forEach(function(ingredient) {
+    selectedIngredients.push(ingredient.value);
+    // TODO: use array to generate dish using the API? to get recipe database
+  });
   }
 // function to generate a cocktail based on the selected ingredients and the generated dish
   function generateCocktail(ingredient) {
