@@ -148,10 +148,5 @@ window.addEventListener('load', function() {
 
 });
 
-// Add event listeners to form submission buttons
-var generateDishButton = document.getElementById('generateDishButton');
-generateDishButton.addEventListener('click', displayGeneratedDish);
 
-var generateCocktailButton = document.getElementById('generateCocktailButton');
-generateCocktailButton.addEventListener('click', displayGeneratedCocktail);
 
