@@ -49,7 +49,7 @@ window.addEventListener('load', function() {
   }
 // function to generate a cocktail based on the selected ingredients and the generated dish
   function generateCocktail(ingredient) {
-    var url = "www.thecocktaildb.com/api/json/v1/1/random.php?i=" + ingredient;
+    var url = "https://www.thecocktaildb.com/api/json/v1/1/random.php?i=" + ingredient;
     //var url = "www.thecocktaildb.com/api/json/v1/1/popular.php?i=" + ingredient;
     var drinkImg;
     var instructions;
