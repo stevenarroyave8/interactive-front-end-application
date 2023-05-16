@@ -12,8 +12,8 @@ window.addEventListener('load', function() {
   })
 
   // Create event listener to generate a cocktail
-  var drinkForm = document.getElementById('dishIngredientsForm');
-  var drinkButton = document.getElementById('generateDishButton');
+  var drinkForm = document.getElementById('cocktailIngredientsForm');
+  var drinkButton = document.getElementById('generateCocktailButton');
   drinkButton.addEventListener('click', function () {
     var drinkIngredients = document.querySelectorAll('input[name="cocktailIngredients"]:checked');
     generateCocktail(drinkIngredients);
