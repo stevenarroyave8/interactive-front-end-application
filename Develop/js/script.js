@@ -1,20 +1,24 @@
 // wait for the page to finish loading before running any JS code
 window.addEventListener('load', function() {
- // get references to the form and generation button
- var genForm = document.getElementById('generationForm');
- var generateButton = document.getElementById('generateButton');
- // add an event listener for the form to be submitted
- genForm.addEventListener('submit', function(event) {
-   event.preventDefault();  
- // get references to the dish and cocktail ingredient checkboxes
- var dishIngredients = document.querySelectorAll('input[name="dishIngredients"]:checked');
- var cocktailIngredients = document.querySelectorAll('input[name="cocktailIngredients"]:checked');
-// generate the dish and cocktail based on the selected ingredients
- var generatedDish = generateDish(dishIngredients);
- generateCocktail(cocktailIngredients, generatedDish);
-  // display the generated dish and cocktail on the page
-  displayGeneratedDish(generatedDish);
-});
+  // Create event listener to generate a dish
+  var dishForm = document.getElementById('dishIngredientsForm');
+  var dishButton = document.getElementById('generateDishButton');
+  dishButton.addEventListener('click', function () {
+    var dishIngredients = document.querySelectorAll('input[name="dishIngredients"]:checked');
+    // We should write generateDish so that it calls displayGeneratedDish automatically
+    //  like what we have for generateCocktail
+    var generatedDish = generateDish(dishIngredients);
+    displayGeneratedDish(generatedDish);
+  })
+
+  // Create event listener to generate a cocktail
+  var drinkForm = document.getElementById('dishIngredientsForm');
+  var drinkButton = document.getElementById('generateDishButton');
+  drinkButton.addEventListener('click', function () {
+    var drinkIngredients = document.querySelectorAll('input[name="cocktailIngredients"]:checked');
+    generateCocktail(drinkIngredients);
+  })
+ 
  // function to generate a dish based on the selected ingredients
  function generateDish(ingredients) {
     // TODO: dish generation logic here
