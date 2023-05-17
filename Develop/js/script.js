@@ -69,53 +69,48 @@ window.addEventListener("load", function () {
     fetch(url).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          drinkImg = data.strDrinkThumb + "/preview";
-          instructions = data.strInstructions;
+          drinkImg = data.drinks[0].strDrinkThumb;// + "/preview";
+          instructions = data.drinks[0].strInstructions;
           // I dont want to do it this way, but the api doesn't group them into an array,
           //  so I can't do it iteratively
-          ingredients.push(data.strIngredient1);
-          ingredients.push(data.strIngredient2);
-          ingredients.push(data.strIngredient3);
-          ingredients.push(data.strIngredient4);
-          ingredients.push(data.strIngredient5);
-          ingredients.push(data.strIngredient6);
-          ingredients.push(data.strIngredient7);
-          ingredients.push(data.strIngredient8);
-          ingredients.push(data.strIngredient9);
-          ingredients.push(data.strIngredient10);
-          ingredients.push(data.strIngredient11);
-          ingredients.push(data.strIngredient12);
-          ingredients.push(data.strIngredient13);
-          ingredients.push(data.strIngredient14);
-          ingredients.push(data.strIngredient15);
-          measurements.push(data.strMeasure1);
-          measurements.push(data.strMeasure2);
-          measurements.push(data.strMeasure3);
-          measurements.push(data.strMeasure4);
-          measurements.push(data.strMeasure5);
-          measurements.push(data.strMeasure6);
-          measurements.push(data.strMeasure7);
-          measurements.push(data.strMeasure8);
-          measurements.push(data.strMeasure9);
-          measurements.push(data.strMeasure10);
-          measurements.push(data.strMeasure11);
-          measurements.push(data.strMeasure12);
-          measurements.push(data.strMeasure13);
-          measurements.push(data.strMeasure14);
-          measurements.push(data.strMeasure15);
+          ingredients.push(data.drinks[0].strIngredient1);
+          ingredients.push(data.drinks[0].strIngredient2);
+          ingredients.push(data.drinks[0].strIngredient3);
+          ingredients.push(data.drinks[0].strIngredient4);
+          ingredients.push(data.drinks[0].strIngredient5);
+          ingredients.push(data.drinks[0].strIngredient6);
+          ingredients.push(data.drinks[0].strIngredient7);
+          ingredients.push(data.drinks[0].strIngredient8);
+          ingredients.push(data.drinks[0].strIngredient9);
+          ingredients.push(data.drinks[0].strIngredient10);
+          ingredients.push(data.drinks[0].strIngredient11);
+          ingredients.push(data.drinks[0].strIngredient12);
+          ingredients.push(data.drinks[0].strIngredient13);
+          ingredients.push(data.drinks[0].strIngredient14);
+          ingredients.push(data.drinks[0].strIngredient15);
+          measurements.push(data.drinks[0].strMeasure1);
+          measurements.push(data.drinks[0].strMeasure2);
+          measurements.push(data.drinks[0].strMeasure3);
+          measurements.push(data.drinks[0].strMeasure4);
+          measurements.push(data.drinks[0].strMeasure5);
+          measurements.push(data.drinks[0].strMeasure6);
+          measurements.push(data.drinks[0].strMeasure7);
+          measurements.push(data.drinks[0].strMeasure8);
+          measurements.push(data.drinks[0].strMeasure9);
+          measurements.push(data.drinks[0].strMeasure10);
+          measurements.push(data.drinks[0].strMeasure11);
+          measurements.push(data.drinks[0].strMeasure12);
+          measurements.push(data.drinks[0].strMeasure13);
+          measurements.push(data.drinks[0].strMeasure14);
+          measurements.push(data.drinks[0].strMeasure15);
+          displayGeneratedCocktail(drinkImg, instructions, ingredients, measurements);
         });
       } else {
         alert("Error: " + response.statusText);
       }
     });
 
-    console.log(drinkImg + instructions + ingredients + measurements);
-    displayGeneratedCocktail([
-      drinkImg,
-      instructions,
-      ingredients,
-      measurements,
-    ]);
+    
   }
   // function to display the generated dish on the page
   function displayGeneratedDish(dish) {
@@ -129,12 +124,12 @@ window.addEventListener("load", function () {
     });
   }
   // Define the function to display the generated cocktail on the page
-  function displayGeneratedCocktail(cocktail) {
+  function displayGeneratedCocktail(drinkImg, instructions, ingredients, measurements) {
     // TODO: cocktail display logic here
-    var drinkImg = cocktail[0];
-    var instructions = cocktail[1];
-    var ingredients = cocktail[2];
-    var measurements = cocktail[3];
+    console.log(drinkImg);
+    console.log(instructions);
+    console.log(ingredients);
+    console.log(measurements);
     var cocktailImg = document.getElementById("cocktail-img");
     var cocktailInstructions = document.getElementById("cocktail-instructions");
     var cocktailIngredients = document.getElementById("cocktail-ingredients");
