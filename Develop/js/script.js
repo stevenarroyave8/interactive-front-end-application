@@ -24,6 +24,9 @@ window.addEventListener("load", function () {
   // function to generate a dish based on the selected ingredients
   async function generateDish(ingredients) {
     console.log(ingredients);
+    async function generateDish (instructions){
+      console.log(instructions)
+    }
     // TODO: dish generation logic here
     var foodUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`;
 
@@ -38,18 +41,18 @@ window.addEventListener("load", function () {
       if (meals && meals.length > 0) {
         meals.forEach((meal) => {
           console.log(meal);
-          // for (let i = 1; i <= 20; i++) {
-          //   const ingredient = meal["strIngredient" + i];
-          //   const measurement = meal["strMeasure" + i];
-          //   if (ingredient && measurement) {
-          //     console.log(
-          //       "Ingredient:",
-          //       ingredient,
-          //       "Measurement:",
-          //       measurement
-          //     );
-          //   }
-          // }
+     //      for (let i = 1; i <= 20; i++) {
+     //        const ingredient = meal["strIngredient" + i];
+     //        const measurement = meal["strMeasure" + i];
+     //        if (ingredient && measurement) {
+     //          console.log(
+     //            "Ingredient:",
+     //            ingredient,
+     //           "Measurement:",
+     //           measurement
+     //       );
+     //       }
+     //      }
         });
       }
     } catch (error) {
@@ -135,6 +138,7 @@ window.addEventListener("load", function () {
     var cocktailIngredients = document.getElementById("cocktail-ingredients");
     cocktailImg.src = drinkImg;
     cocktailInstructions.innerText = instructions;
+    cocktailInstructions.style.display ="none"
     // Create an unordered list to hold the cocktail ingredients
     var ingredientsList = document.createElement("ul");
     // Loop through the ingredients and measurements to create list items
@@ -150,5 +154,18 @@ window.addEventListener("load", function () {
     }
     // Add the list of ingredients to the cocktail ingredients element
     cocktailIngredients.appendChild(ingredientsList);
+    cocktailIngredients.style.display = "none"
+    var recipeBtn = document.createElement("button")
+    recipeBtn.textContent = "Click"
+    var container = document.querySelector(".imgContainer");
+    container.appendChild(recipeBtn);
+    recipeBtn.addEventListener ("click", function(){
+    var imgEl = document.getElementById("cocktail-img")
+    imgEl.style.opacity = "50%";
+    cocktailIngredients.style.display = "block"; 
+    cocktailInstructions.style.display = "block";
+    });
+    
+
   }
 });
