@@ -164,6 +164,7 @@ window.addEventListener("load", function () {
     imgEl.style.opacity = "50%";
     cocktailIngredients.style.display = "block"; 
     cocktailInstructions.style.display = "block";
+    recipeBtn.style.display = "none"
     });
     
 
