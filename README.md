@@ -19,6 +19,19 @@ Once the respective ingredients are selected you wil hit the submit button that 
 
 <img width="1410" alt="Screen Shot 2023-05-17 at 8 59 24 PM" src="https://github.com/stevenarroyave8/interactive-front-end-application/assets/128647787/3afea0c1-9f75-45d0-b2a9-3ef4428413f5">
 
+#### Contributors
+Steven Arroyave
 
-#### Deployed Link
+Andrea Berrios
+
+Nick Price
+
+Mikayla Rangel
+
+Zach Wellens
+
+Anthony Henao
+
+
+##### Deployed Link
 https://stevenarroyave8.github.io/interactive-front-end-application/
